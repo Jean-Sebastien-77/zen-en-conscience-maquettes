@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Zen en Conscience — Direction A · Éditorial Zen</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<style>
+  :root{
+    --cream:#F5F1EA;
+    --ink:#1A1A1A;
+    --muted:#6B6560;
+    --accent:#8B7355;
+  }
+  html,body{background:var(--cream);color:var(--ink);font-family:'Inter',sans-serif;}
+  .serif{font-family:'Fraunces',serif;font-optical-sizing:auto;}
+  .italic-serif{font-family:'Fraunces',serif;font-style:italic;font-weight:300;}
+  .grain{position:fixed;inset:0;pointer-events:none;opacity:.08;z-index:1;mix-blend-mode:multiply;
+    background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");}
+  .marquee{animation:marquee 45s linear infinite;}
+  @keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+  .word{display:inline-block;overflow:hidden;vertical-align:top;}
+  .word > span{display:inline-block;transform:translateY(110%);}
+  .reveal-up{opacity:0;transform:translateY(32px);}
+  .hover-img:hover img{transform:scale(1.04);}
+  .hover-img img{transition:transform 1.2s cubic-bezier(.2,.8,.2,1);}
+  .line{background:linear-gradient(90deg,var(--ink) 0%,var(--ink) 100%);background-size:0% 1px;background-position:0 100%;background-repeat:no-repeat;transition:background-size .6s cubic-bezier(.2,.8,.2,1);}
+  .line:hover{background-size:100% 1px;}
+  .cursor-dot{position:fixed;width:8px;height:8px;border-radius:50%;background:var(--ink);pointer-events:none;z-index:50;mix-blend-mode:difference;transform:translate(-50%,-50%);transition:width .3s,height .3s;}
+  @media (pointer:coarse){.cursor-dot{display:none}}
+</style>
+</head>
+<body class="antialiased selection:bg-black selection:text-white">
+
+<div class="grain"></div>
+<div class="cursor-dot" id="cursor"></div>
+
+<!-- NAV -->
+<nav class="fixed top-0 left-0 right-0 z-40 px-6 md:px-12 py-6 flex items-center justify-between backdrop-blur-sm" style="background:rgba(245,241,234,.6);">
+  <a href="#" class="serif text-xl tracking-tight">Zen en Conscience<span class="italic-serif text-[var(--muted)]">.</span></a>
+  <div class="hidden md:flex items-center gap-8 text-sm">
+    <a class="line" href="#">Soins</a>
+    <a class="line" href="#">Méditation</a>
+    <a class="line" href="#">Ateliers</a>
+    <a class="line" href="#">Blog</a>
+    <a class="line" href="#">Contact</a>
+  </div>
+  <a href="#" class="group inline-flex items-center gap-2 border border-[var(--ink)] rounded-full px-5 py-2.5 text-sm hover:bg-[var(--ink)] hover:text-[var(--cream)] transition-colors">
+    Prendre RDV
+    <svg class="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+  </a>
+</nav>
+
+<!-- HERO -->
+<section class="relative min-h-screen px-6 md:px-12 pt-32 md:pt-48 pb-20 overflow-hidden">
+  <div class="max-w-[1400px] mx-auto">
+    <div class="flex items-start gap-6 mb-8">
+      <span class="reveal-up text-xs tracking-[0.25em] uppercase text-[var(--muted)] mt-2">— Shiatsu · Réflexologie · Méditation</span>
+    </div>
+    <h1 class="serif font-light leading-[0.95] text-[14vw] md:text-[10vw] tracking-tight">
+      <span class="word"><span>Revenir</span></span>
+      <span class="word"><span>à</span></span>
+      <span class="word italic-serif"><span>soi,</span></span><br/>
+      <span class="word"><span>en</span></span>
+      <span class="word"><span>pleine</span></span>
+      <span class="word italic-serif"><span>conscience.</span></span>
+    </h1>
+    <div class="mt-16 md:mt-24 grid md:grid-cols-12 gap-8 items-end">
+      <p class="reveal-up md:col-span-5 text-lg md:text-xl leading-relaxed text-[var(--muted)] max-w-md">
+        Sophie Delahaye accompagne votre équilibre corporel et émotionnel à travers le shiatsu thérapeutique, la réflexologie et la méditation de pleine conscience.
+      </p>
+      <div class="md:col-span-4 md:col-start-9 flex items-center gap-4">
+        <a href="#" class="group inline-flex items-center gap-3 bg-[var(--ink)] text-[var(--cream)] rounded-full px-7 py-4 text-sm">
+          Réserver une séance
+          <span class="w-6 h-6 rounded-full bg-[var(--cream)] text-[var(--ink)] flex items-center justify-center group-hover:rotate-45 transition-transform">→</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- floating image -->
+  <div class="reveal-up absolute right-6 md:right-12 top-32 md:top-48 w-36 md:w-52 aspect-[3/4] rounded-[999px] overflow-hidden hover-img">
+    <img src="https://images.unsplash.com/photo-1545389336-cf090694435e?w=800&auto=format&fit=crop" class="w-full h-full object-cover" alt=""/>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="border-y border-[var(--ink)]/10 py-6 overflow-hidden">
+  <div class="marquee whitespace-nowrap flex gap-16 serif italic-serif text-3xl md:text-5xl text-[var(--muted)]">
+    <span>Shiatsu thérapeutique</span><span>·</span>
+    <span>Réflexologie plantaire</span><span>·</span>
+    <span>Aromathérapie</span><span>·</span>
+    <span>Méditation MBSR</span><span>·</span>
+    <span>Amma assis</span><span>·</span>
+    <span>Shiatsu thérapeutique</span><span>·</span>
+    <span>Réflexologie plantaire</span><span>·</span>
+    <span>Aromathérapie</span><span>·</span>
+    <span>Méditation MBSR</span><span>·</span>
+    <span>Amma assis</span><span>·</span>
+  </div>
+</div>
+
+<!-- ACCOMPAGNEMENTS -->
+<section class="px-6 md:px-12 py-24 md:py-40">
+  <div class="max-w-[1400px] mx-auto">
+    <div class="flex items-start justify-between mb-16 md:mb-24">
+      <div>
+        <span class="reveal-up text-xs tracking-[0.25em] uppercase text-[var(--muted)]">— 01 / Accompagnements</span>
+        <h2 class="reveal-up serif text-5xl md:text-7xl font-light leading-[1.05] mt-4 max-w-2xl">
+          Quatre pratiques pour <span class="italic-serif">apaiser</span>, libérer et <span class="italic-serif">renouer</span>.
+        </h2>
+      </div>
+      <a href="#" class="hidden md:inline-flex items-center gap-2 text-sm line">Voir tout<svg class="w-3.5 h-3.5" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+    </div>
+
+    <div class="grid md:grid-cols-12 gap-x-8 gap-y-20">
+      <!-- item -->
+      <article class="reveal-up md:col-span-6 group cursor-pointer">
+        <div class="aspect-[4/5] overflow-hidden hover-img mb-6">
+          <img src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=1000&auto=format&fit=crop" class="w-full h-full object-cover" alt=""/>
+        </div>
+        <div class="flex items-baseline justify-between">
+          <h3 class="serif text-3xl md:text-4xl font-light">Shiatsu <span class="italic-serif">thérapeutique</span></h3>
+          <span class="text-sm text-[var(--muted)]">01</span>
+        </div>
+        <p class="mt-3 text-[var(--muted)] max-w-md">Pression des doigts le long des méridiens pour rééquilibrer l'énergie du corps. Inclut l'Amma assis en entreprise.</p>
+      </article>
+
+      <article class="reveal-up md:col-span-6 md:mt-32 group cursor-pointer">
+        <div class="aspect-[4/5] overflow-hidden hover-img mb-6">
+          <img src="https://images.unsplash.com/photo-1600334129128-685c5582fd35?w=1000&auto=format&fit=crop" class="w-full h-full object-cover" alt=""/>
+        </div>
+        <div class="flex items-baseline justify-between">
+          <h3 class="serif text-3xl md:text-4xl font-light">Réflexologie</h3>
+          <span class="text-sm text-[var(--muted)]">02</span>
+        </div>
+        <p class="mt-3 text-[var(--muted)] max-w-md">Stimulation des zones réflexes des pieds et des mains, miroir de l'ensemble du corps.</p>
+      </article>
+
+      <article class="reveal-up md:col-span-6 group cursor-pointer">
+        <div class="aspect-[4/5] overflow-hidden hover-img mb-6">
+          <img src="https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?w=1000&auto=format&fit=crop" class="w-full h-full object-cover" alt=""/>
+        </div>
+        <div class="flex items-baseline justify-between">
+          <h3 class="serif text-3xl md:text-4xl font-light">Aroma<span class="italic-serif">thérapie</span></h3>
+          <span class="text-sm text-[var(--muted)]">03</span>
+        </div>
+        <p class="mt-3 text-[var(--muted)] max-w-md">Usage thérapeutique des huiles essentielles pour accompagner le soin et la vitalité au quotidien.</p>
+      </article>
+
+      <article class="reveal-up md:col-span-6 md:mt-32 group cursor-pointer">
+        <div class="aspect-[4/5] overflow-hidden hover-img mb-6">
+          <img src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=1000&auto=format&fit=crop" class="w-full h-full object-cover" alt=""/>
+        </div>
+        <div class="flex items-baseline justify-between">
+          <h3 class="serif text-3xl md:text-4xl font-light">Méditation</h3>
+          <span class="text-sm text-[var(--muted)]">04</span>
+        </div>
+        <p class="mt-3 text-[var(--muted)] max-w-md">Programmes MBSR adultes et Mind Full-Up pour enfants — cultiver l'attention, réduire le stress.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIAL -->
+<section class="px-6 md:px-12 py-24 md:py-40 border-t border-[var(--ink)]/10">
+  <div class="max-w-[1200px] mx-auto">
+    <span class="reveal-up text-xs tracking-[0.25em] uppercase text-[var(--muted)]">— 02 / Paroles reçues</span>
+    <blockquote class="reveal-up mt-10 serif text-3xl md:text-6xl font-light leading-[1.15] tracking-tight">
+      <span class="italic-serif text-[var(--accent)]">«</span> Sophie a une écoute et une <span class="italic-serif">douceur</span> rares. Après chaque séance je repars <span class="italic-serif">légère</span>, ancrée, et plus présente à moi-même. <span class="italic-serif text-[var(--accent)]">»</span>
+    </blockquote>
+    <div class="reveal-up mt-12 flex items-center justify-between">
+      <div>
+        <p class="font-medium">Camille L.</p>
+        <p class="text-sm text-[var(--muted)]">Paris · Avis Google ★★★★★</p>
+      </div>
+      <div class="flex items-center gap-2 text-sm text-[var(--muted)]">
+        <span class="font-medium text-[var(--ink)]">12</span> avis
+        <span>·</span>
+        <span class="font-medium text-[var(--ink)]">4.9</span>/5
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="px-6 md:px-12 py-12 border-t border-[var(--ink)]/10 text-sm text-[var(--muted)] flex flex-col md:flex-row items-center justify-between gap-4">
+  <span>© 2026 Zen en Conscience · Sophie Delahaye</span>
+  <span class="italic-serif">Direction A — Éditorial Zen</span>
+</footer>
+
+<script>
+  gsap.registerPlugin(ScrollTrigger);
+
+  // word reveal hero
+  gsap.to(".word > span", {y:"0%", duration:1.2, stagger:.08, ease:"power3.out", delay:.2});
+
+  // generic reveal
+  gsap.utils.toArray(".reveal-up").forEach(el=>{
+    gsap.to(el,{opacity:1,y:0,duration:1,ease:"power3.out",scrollTrigger:{trigger:el,start:"top 85%"}});
+  });
+
+  // cursor
+  const dot=document.getElementById('cursor');
+  window.addEventListener('mousemove',e=>{
+    gsap.to(dot,{x:e.clientX,y:e.clientY,duration:.3,ease:"power3.out",overwrite:true});
+  });
+  document.querySelectorAll('a,button').forEach(el=>{
+    el.addEventListener('mouseenter',()=>gsap.to(dot,{width:32,height:32,duration:.3}));
+    el.addEventListener('mouseleave',()=>gsap.to(dot,{width:8,height:8,duration:.3}));
+  });
+</script>
+</body>
+</html>

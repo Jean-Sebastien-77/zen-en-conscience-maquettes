@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Zen en Conscience — Direction B · Nature Organique</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<style>
+  :root{
+    --sage:#B2BDA3;
+    --sage-deep:#7F8C71;
+    --cream:#EFEADD;
+    --terra:#C97B5A;
+    --ink:#2B2A26;
+  }
+  html,body{background:var(--cream);color:var(--ink);font-family:'DM Sans',sans-serif;}
+  .serif{font-family:'DM Serif Display',serif;}
+  .italic{font-style:italic;}
+
+  .blob{position:absolute;border-radius:50%;filter:blur(60px);opacity:.55;pointer-events:none;}
+  .reveal{opacity:0;transform:translateY(40px);}
+
+  .btn-primary{background:var(--ink);color:var(--cream);border-radius:999px;padding:1rem 1.8rem;display:inline-flex;align-items:center;gap:.75rem;transition:all .4s ease;}
+  .btn-primary:hover{background:var(--terra);transform:translateY(-2px);}
+
+  .leaf{position:absolute;opacity:.7;}
+
+  .card-soin{background:var(--cream);border:1px solid rgba(43,42,38,.08);border-radius:32px;overflow:hidden;transition:all .6s cubic-bezier(.2,.8,.2,1);}
+  .card-soin:hover{transform:translateY(-8px);box-shadow:0 30px 60px -20px rgba(43,42,38,.2);}
+  .card-soin:hover .card-media{transform:scale(1.06);}
+  .card-media{transition:transform 1.2s cubic-bezier(.2,.8,.2,1);}
+
+  .scribble{stroke-dasharray:500;stroke-dashoffset:500;}
+</style>
+</head>
+<body class="antialiased overflow-x-hidden">
+
+<!-- floating blobs -->
+<div class="blob" style="width:500px;height:500px;background:var(--sage);top:-100px;right:-100px;"></div>
+<div class="blob" style="width:400px;height:400px;background:var(--terra);top:40%;left:-150px;opacity:.25;"></div>
+
+<!-- NAV -->
+<nav class="fixed top-4 left-4 right-4 md:top-6 md:left-6 md:right-6 z-40 px-6 py-4 flex items-center justify-between rounded-full backdrop-blur-md" style="background:rgba(239,234,221,.75);border:1px solid rgba(43,42,38,.08);">
+  <a href="#" class="flex items-center gap-2 serif text-xl">
+    <span class="w-2.5 h-2.5 rounded-full inline-block" style="background:var(--terra)"></span>
+    Zen en Conscience
+  </a>
+  <div class="hidden md:flex items-center gap-7 text-sm">
+    <a href="#" class="hover:text-[var(--terra)] transition-colors">Soins</a>
+    <a href="#" class="hover:text-[var(--terra)] transition-colors">Méditation</a>
+    <a href="#" class="hover:text-[var(--terra)] transition-colors">Ateliers</a>
+    <a href="#" class="hover:text-[var(--terra)] transition-colors">Blog</a>
+  </div>
+  <a href="#" class="btn-primary text-sm" style="padding:.6rem 1.2rem;">RDV <span>→</span></a>
+</nav>
+
+<!-- HERO -->
+<section class="relative min-h-screen px-6 md:px-10 pt-32 md:pt-40 pb-20">
+  <div class="max-w-[1400px] mx-auto relative">
+
+    <!-- leaf svg decor -->
+    <svg class="leaf hidden md:block" style="top:-20px;left:40%;width:120px;" viewBox="0 0 200 200">
+      <path d="M100 20 C 40 40 20 120 100 180 C 180 120 160 40 100 20 Z" fill="none" stroke="var(--sage-deep)" stroke-width="1.5"/>
+      <path d="M100 20 L 100 180" stroke="var(--sage-deep)" stroke-width="1"/>
+    </svg>
+
+    <div class="reveal flex items-center gap-3 mb-8">
+      <span class="w-12 h-px bg-[var(--sage-deep)]"></span>
+      <span class="text-xs tracking-[0.3em] uppercase text-[var(--sage-deep)]">Bien-être holistique · Paris</span>
+    </div>
+
+    <h1 class="reveal serif text-[13vw] md:text-[8.5vw] leading-[.95] tracking-tight">
+      Souffle, <span class="italic" style="color:var(--terra)">douceur</span>,<br/>
+      <span class="italic">présence</span> à soi<span style="color:var(--sage-deep)">.</span>
+    </h1>
+
+    <div class="mt-14 grid md:grid-cols-12 gap-10 items-end">
+      <p class="reveal md:col-span-5 text-lg leading-relaxed text-[var(--ink)]/70">
+        Shiatsu, réflexologie, méditation. Sophie Delahaye vous accueille dans un espace chaleureux pour reconnecter le corps, l'esprit et l'émotion.
+      </p>
+      <div class="reveal md:col-span-4 md:col-start-9 flex flex-col sm:flex-row gap-3">
+        <a href="#" class="btn-primary text-sm">Prendre RDV →</a>
+        <a href="#" class="inline-flex items-center gap-2 px-6 py-4 rounded-full border border-[var(--ink)]/15 text-sm hover:bg-[var(--sage)]/30 transition-colors">Découvrir les soins</a>
+      </div>
+    </div>
+
+    <!-- hero images -->
+    <div class="reveal mt-16 grid grid-cols-12 gap-4">
+      <div class="col-span-7 aspect-[16/10] rounded-[40px] overflow-hidden">
+        <img src="https://images.unsplash.com/photo-1600334129128-685c5582fd35?w=1600&auto=format&fit=crop" class="w-full h-full object-cover" alt=""/>
+      </div>
+      <div class="col-span-5 grid grid-rows-2 gap-4">
+        <div class="aspect-[4/3] rounded-[32px] overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1545389336-cf090694435e?w=800&auto=format&fit=crop" class="w-full h-full object-cover" alt=""/>
+        </div>
+        <div class="aspect-[4/3] rounded-[32px] overflow-hidden" style="background:var(--sage);">
+          <div class="w-full h-full flex items-center justify-center text-center p-6">
+            <div>
+              <p class="serif text-5xl italic" style="color:var(--cream)">4.9</p>
+              <p class="text-sm mt-2" style="color:var(--cream)">★★★★★ · 12 avis Google</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ACCOMPAGNEMENTS -->
+<section class="relative px-6 md:px-10 py-24 md:py-32">
+  <div class="blob" style="width:600px;height:600px;background:var(--sage);top:30%;right:-200px;opacity:.35;"></div>
+
+  <div class="max-w-[1400px] mx-auto relative">
+    <div class="reveal flex items-end justify-between mb-16 flex-wrap gap-6">
+      <div>
+        <span class="text-xs tracking-[0.3em] uppercase text-[var(--sage-deep)]">· Pratiques</span>
+        <h2 class="serif text-5xl md:text-7xl leading-[1.05] mt-3 max-w-2xl">
+          Des soins qui prennent le <span class="italic" style="color:var(--terra)">temps</span> de vous écouter.
+        </h2>
+      </div>
+      <a href="#" class="inline-flex items-center gap-2 text-sm underline underline-offset-4">Toutes les pratiques →</a>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-6">
+      <a href="#" class="reveal card-soin">
+        <div class="aspect-[4/5] overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=900&auto=format&fit=crop" class="card-media w-full h-full object-cover" alt=""/>
+        </div>
+        <div class="p-7">
+          <p class="text-xs tracking-widest uppercase text-[var(--sage-deep)] mb-2">01 · Énergétique</p>
+          <h3 class="serif text-3xl">Shiatsu <span class="italic">thérapeutique</span></h3>
+          <p class="mt-3 text-sm text-[var(--ink)]/70">Rééquilibre l'énergie, libère les tensions profondes. Inclut l'Amma assis.</p>
+          <div class="mt-5 flex items-center justify-between">
+            <span class="text-sm">80€ · 1h</span>
+            <span class="w-9 h-9 rounded-full flex items-center justify-center" style="background:var(--sage);color:var(--cream)">→</span>
+          </div>
+        </div>
+      </a>
+
+      <a href="#" class="reveal card-soin md:mt-12">
+        <div class="aspect-[4/5] overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1519824145371-296894a0daa9?w=900&auto=format&fit=crop" class="card-media w-full h-full object-cover" alt=""/>
+        </div>
+        <div class="p-7">
+          <p class="text-xs tracking-widest uppercase text-[var(--sage-deep)] mb-2">02 · Corporel</p>
+          <h3 class="serif text-3xl">Réflexologie</h3>
+          <p class="mt-3 text-sm text-[var(--ink)]/70">Zones réflexes des pieds — digestion, sommeil, stress, circulation.</p>
+          <div class="mt-5 flex items-center justify-between">
+            <span class="text-sm">70€ · 45 min</span>
+            <span class="w-9 h-9 rounded-full flex items-center justify-center" style="background:var(--terra);color:var(--cream)">→</span>
+          </div>
+        </div>
+      </a>
+
+      <a href="#" class="reveal card-soin">
+        <div class="aspect-[4/5] overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?w=900&auto=format&fit=crop" class="card-media w-full h-full object-cover" alt=""/>
+        </div>
+        <div class="p-7">
+          <p class="text-xs tracking-widest uppercase text-[var(--sage-deep)] mb-2">03 · Olfactif</p>
+          <h3 class="serif text-3xl">Aroma<span class="italic">thérapie</span></h3>
+          <p class="mt-3 text-sm text-[var(--ink)]/70">Conseil personnalisé en huiles essentielles, synergies sur-mesure.</p>
+          <div class="mt-5 flex items-center justify-between">
+            <span class="text-sm">60€ · consultation</span>
+            <span class="w-9 h-9 rounded-full flex items-center justify-center" style="background:var(--sage-deep);color:var(--cream)">→</span>
+          </div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIAL -->
+<section class="relative px-6 md:px-10 py-24 md:py-32">
+  <div class="max-w-[1100px] mx-auto relative text-center">
+    <svg class="mx-auto mb-8" width="60" height="60" viewBox="0 0 60 60">
+      <path d="M10 35 C 15 50 30 50 30 35 C 30 25 20 20 20 20 M40 35 C 45 50 60 50 60 35 C 60 25 50 20 50 20" fill="none" stroke="var(--terra)" stroke-width="1.5" class="scribble"/>
+    </svg>
+    <span class="reveal text-xs tracking-[0.3em] uppercase text-[var(--sage-deep)]">Paroles reçues</span>
+    <blockquote class="reveal mt-8 serif text-3xl md:text-5xl leading-[1.2] tracking-tight">
+      « Un vrai moment de <span class="italic" style="color:var(--terra)">suspension</span>. Sophie combine expertise, bienveillance et une capacité rare à <span class="italic">nous remettre</span> dans notre corps. »
+    </blockquote>
+    <div class="reveal mt-10">
+      <p class="serif text-2xl">Émilie R.</p>
+      <p class="text-sm text-[var(--ink)]/60 mt-1">Google · ★★★★★</p>
+    </div>
+
+    <div class="reveal mt-16 inline-flex items-center gap-8 px-8 py-5 rounded-full" style="background:var(--sage);color:var(--cream);">
+      <div class="flex items-center gap-2">
+        <span class="serif text-2xl">4.9</span>
+        <span>/5</span>
+      </div>
+      <span class="w-px h-6 bg-[var(--cream)]/40"></span>
+      <span class="text-sm">12 avis Google</span>
+      <span class="w-px h-6 bg-[var(--cream)]/40"></span>
+      <span class="text-sm">100% recommandent</span>
+    </div>
+  </div>
+</section>
+
+<footer class="px-6 md:px-10 py-10 text-sm text-[var(--ink)]/60 flex flex-col md:flex-row items-center justify-between gap-4 border-t border-[var(--ink)]/10">
+  <span>© 2026 Zen en Conscience</span>
+  <span class="italic">Direction B — Nature Organique</span>
+</footer>
+
+<script>
+  gsap.registerPlugin(ScrollTrigger);
+  gsap.utils.toArray(".reveal").forEach(el=>{
+    gsap.to(el,{opacity:1,y:0,duration:1.1,ease:"power3.out",scrollTrigger:{trigger:el,start:"top 88%"}});
+  });
+  gsap.to(".scribble",{strokeDashoffset:0,duration:2,ease:"power2.out",scrollTrigger:{trigger:".scribble",start:"top 80%"}});
+  // blobs parallax
+  gsap.utils.toArray(".blob").forEach((b,i)=>{
+    gsap.to(b,{y:()=>((i%2===0)?-150:150),ease:"none",scrollTrigger:{trigger:b,start:"top bottom",end:"bottom top",scrub:true}});
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,360 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Zen en Conscience — Direction C · Sanctuaire Végétal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300;1,9..144,400&family=Geist+Mono:wght@300;400&family=Geist:wght@300;400;500&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<style>
+  :root{
+    --moss-deep:#1F2A22;      /* vert sombre profond */
+    --moss:#2E3D2E;            /* vert mousse */
+    --moss-mid:#4A5E4A;        /* vert moyen */
+    --moss-light:#B2BDA3;      /* sage pâle (inspi) */
+    --cream:#F3EADA;           /* crème chaude */
+    --cream-deep:#E8DAC0;      /* crème dorée */
+    --rose:#EABFAA;            /* rose poudré */
+    --rose-deep:#D49E85;       /* rose terracotta */
+    --amber:#D49752;           /* ambre miel */
+    --ink:#14191A;
+  }
+  html,body{background:var(--moss-deep);color:var(--cream);font-family:'Geist',sans-serif;font-weight:300;overflow-x:hidden;}
+  .serif{font-family:'Fraunces',serif;font-optical-sizing:auto;font-variation-settings:"SOFT" 50;}
+  .italic{font-style:italic;font-weight:300;}
+  .mono{font-family:'Geist Mono',monospace;}
+
+  /* Texture grain globale */
+  .noise{position:fixed;inset:0;pointer-events:none;z-index:2;opacity:.08;mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");}
+
+  /* Halos radiaux */
+  .glow-amber{position:absolute;border-radius:50%;filter:blur(80px);pointer-events:none;}
+
+  .reveal{opacity:0;transform:translateY(30px);}
+  .char{display:inline-block;opacity:0;transform:translateY(30px);}
+
+  /* Hero image fullscreen avec overlay gradient */
+  .hero-img{position:absolute;inset:0;z-index:0;}
+  .hero-img::after{content:"";position:absolute;inset:0;background:
+    linear-gradient(180deg,rgba(31,42,34,.72) 0%,rgba(31,42,34,.82) 50%,rgba(31,42,34,.98) 100%),
+    radial-gradient(ellipse at 85% 25%,rgba(212,158,133,.22) 0%,transparent 55%),
+    radial-gradient(ellipse at 10% 75%,rgba(178,189,163,.14) 0%,transparent 55%);}
+
+  .card-glass{background:rgba(30,42,33,.55);backdrop-filter:blur(20px) saturate(120%);-webkit-backdrop-filter:blur(20px) saturate(120%);border:1px solid rgba(243,234,218,.1);}
+
+  /* Serif smart italic */
+  .swoosh{font-family:'Fraunces',serif;font-style:italic;font-weight:400;font-variation-settings:"SOFT" 100,"opsz" 144;}
+
+  .soin-row{border-top:1px solid rgba(243,234,218,.12);transition:all .6s cubic-bezier(.2,.8,.2,1);}
+  .soin-row:last-child{border-bottom:1px solid rgba(243,234,218,.12);}
+  .soin-row:hover{background:linear-gradient(90deg,rgba(234,191,170,.08) 0%,transparent 100%);}
+  .soin-row:hover .soin-title{padding-left:2rem;color:var(--rose);}
+  .soin-row:hover .soin-img{opacity:1;transform:scale(1) translateY(-50%);}
+  .soin-row:hover .arrow{transform:translateX(10px);color:var(--rose);}
+  .soin-title{transition:all .6s cubic-bezier(.2,.8,.2,1);}
+  .soin-img{position:absolute;right:12%;top:50%;transform:scale(.92) translateY(-50%);width:280px;height:340px;opacity:0;transition:all .7s cubic-bezier(.2,.8,.2,1);pointer-events:none;overflow:hidden;border-radius:2px;box-shadow:0 30px 60px -20px rgba(0,0,0,.5);}
+  @media(max-width:900px){.soin-img{display:none}}
+  .arrow{transition:all .4s;}
+
+  /* Button */
+  .btn-cream{background:var(--cream);color:var(--moss-deep);border-radius:999px;padding:1rem 2rem;display:inline-flex;align-items:center;gap:.75rem;font-size:.9rem;transition:all .5s cubic-bezier(.2,.8,.2,1);}
+  .btn-cream:hover{background:var(--rose);transform:translateY(-2px);box-shadow:0 20px 40px -10px rgba(234,191,170,.4);}
+  .btn-ghost{border:1px solid rgba(243,234,218,.3);color:var(--cream);border-radius:999px;padding:1rem 2rem;display:inline-flex;align-items:center;gap:.75rem;font-size:.9rem;transition:all .4s;}
+  .btn-ghost:hover{background:rgba(243,234,218,.08);border-color:var(--rose);}
+
+  /* Floating orb decor */
+  .orb{position:absolute;border-radius:50%;pointer-events:none;}
+
+  /* Marquee */
+  .marquee{animation:marquee 50s linear infinite;}
+  @keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+  /* Vase/ceramic styling */
+  .ceramic{filter:drop-shadow(0 30px 40px rgba(0,0,0,.5));}
+
+  /* Number counter decor */
+  .stat-num{font-family:'Fraunces',serif;font-variation-settings:"opsz" 144,"SOFT" 100;}
+</style>
+</head>
+<body class="antialiased">
+
+<div class="noise"></div>
+
+<!-- NAV -->
+<nav class="fixed top-5 left-4 right-4 md:top-6 md:left-8 md:right-8 z-50 px-6 py-3.5 flex items-center justify-between rounded-full card-glass">
+  <a href="#" class="flex items-baseline gap-2.5">
+    <span class="serif italic text-lg" style="color:var(--rose)">z</span>
+    <span class="serif text-lg tracking-tight">Zen en Conscience</span>
+  </a>
+  <div class="hidden md:flex items-center gap-8 text-sm">
+    <a class="hover:text-[var(--rose)] transition-colors" href="#">Soins</a>
+    <a class="hover:text-[var(--rose)] transition-colors" href="#">Méditation</a>
+    <a class="hover:text-[var(--rose)] transition-colors" href="#">Ateliers</a>
+    <a class="hover:text-[var(--rose)] transition-colors" href="#">Blog</a>
+    <a class="hover:text-[var(--rose)] transition-colors" href="#">Contact</a>
+  </div>
+  <a href="#" class="btn-cream" style="padding:.6rem 1.2rem;font-size:.8rem;">Prendre RDV <span class="swoosh">→</span></a>
+</nav>
+
+<!-- HERO immersif -->
+<section class="relative min-h-[100vh] flex items-end overflow-hidden">
+  <!-- Image hero en fond -->
+  <div class="hero-img">
+    <img src="https://images.unsplash.com/photo-1509223197845-458d87318791?w=2400&auto=format&fit=crop" class="w-full h-full object-cover" alt="feuille de monstera gros plan" style="filter:saturate(.85) brightness(.75)"/>
+  </div>
+
+  <!-- Halos -->
+  <div class="glow-amber" style="width:500px;height:500px;background:var(--rose-deep);opacity:.25;top:20%;right:-100px;"></div>
+  <div class="glow-amber" style="width:600px;height:600px;background:var(--moss-light);opacity:.15;bottom:-200px;left:-200px;"></div>
+
+  <!-- Contenu -->
+  <div class="relative z-10 w-full px-6 md:px-10 pb-16 md:pb-24 pt-32">
+    <div class="max-w-[1400px] mx-auto">
+      <!-- Badge en haut -->
+      <div class="reveal flex items-center gap-3 mb-10">
+        <span class="w-14 h-px" style="background:var(--rose)"></span>
+        <span class="mono text-xs tracking-[0.3em] uppercase" style="color:var(--cream-deep)">Sophie Delahaye · Marly-le-Roi</span>
+      </div>
+
+      <h1 class="serif font-light text-[14vw] md:text-[8.5vw] leading-[.9] tracking-[-0.02em]">
+        <span id="title1">Le soin comme</span><br/>
+        <span id="title2" class="swoosh" style="color:var(--rose)">un sanctuaire</span><br/>
+        <span id="title3">du vivant.</span>
+      </h1>
+
+      <div class="mt-12 md:mt-16 grid md:grid-cols-12 gap-8 items-end">
+        <p class="reveal md:col-span-5 text-base md:text-lg leading-relaxed" style="color:rgba(243,234,218,.85)">
+          Shiatsu thérapeutique, réflexologie, aromathérapie et méditation pleine conscience. Praticienne formée à l'Institut Français du Shiatsu, pour <span class="swoosh" style="color:var(--rose)">dénouer, écouter, renouer</span>.
+        </p>
+        <div class="reveal md:col-span-4 md:col-start-9 flex flex-col sm:flex-row gap-3">
+          <a href="#" class="btn-cream">Réserver une séance</a>
+          <a href="#" class="btn-ghost">Les pratiques</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Ticker bas -->
+  <div class="absolute bottom-6 left-0 right-0 z-10 flex justify-between px-6 md:px-10 mono text-xs uppercase tracking-widest" style="color:rgba(243,234,218,.6)">
+    <span class="flex items-center gap-2"><span class="w-6 h-px" style="background:var(--rose)"></span>Défilez</span>
+    <span><span style="color:var(--amber)">★</span> 4.9 · 12 avis Google</span>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="relative py-8 overflow-hidden border-y" style="border-color:rgba(243,234,218,.08);background:var(--moss);">
+  <div class="marquee whitespace-nowrap flex gap-16 serif italic text-3xl md:text-5xl" style="color:var(--moss-light)">
+    <span>Shiatsu</span><span style="color:var(--rose)">✦</span>
+    <span>Réflexologie</span><span style="color:var(--rose)">✦</span>
+    <span>Aromathérapie</span><span style="color:var(--rose)">✦</span>
+    <span>Méditation MBSR</span><span style="color:var(--rose)">✦</span>
+    <span>Amma assis</span><span style="color:var(--rose)">✦</span>
+    <span>Shiatsu</span><span style="color:var(--rose)">✦</span>
+    <span>Réflexologie</span><span style="color:var(--rose)">✦</span>
+    <span>Aromathérapie</span><span style="color:var(--rose)">✦</span>
+    <span>Méditation MBSR</span><span style="color:var(--rose)">✦</span>
+    <span>Amma assis</span><span style="color:var(--rose)">✦</span>
+  </div>
+</div>
+
+<!-- SECTION ACCOMPAGNEMENTS avec image sculpturale -->
+<section class="relative px-6 md:px-10 py-24 md:py-40 overflow-hidden">
+  <!-- Halo ambiance -->
+  <div class="glow-amber" style="width:700px;height:700px;background:var(--rose-deep);opacity:.12;top:30%;right:-300px;"></div>
+  <div class="glow-amber" style="width:500px;height:500px;background:var(--moss-light);opacity:.1;bottom:10%;left:-200px;"></div>
+
+  <div class="max-w-[1500px] mx-auto relative">
+    <div class="grid md:grid-cols-12 gap-8 md:gap-16 items-start">
+
+      <!-- Colonne gauche : image sculpturale -->
+      <div class="md:col-span-5 md:sticky md:top-32">
+        <div class="reveal aspect-[4/5] rounded-sm overflow-hidden relative ceramic">
+          <img src="https://images.unsplash.com/photo-1545389336-cf090694435e?w=1000&auto=format&fit=crop" class="w-full h-full object-cover" alt="" style="filter:brightness(.9)"/>
+          <!-- overlay crème bas -->
+          <div class="absolute inset-x-0 bottom-0 p-8 md:p-10" style="background:linear-gradient(180deg,transparent 0%,rgba(31,42,34,.9) 100%);">
+            <p class="mono text-xs tracking-widest uppercase mb-3" style="color:var(--rose)">Institut Français du Shiatsu</p>
+            <p class="serif text-2xl md:text-3xl font-light leading-tight">
+              <span class="swoosh" style="color:var(--rose)">«</span> Dis-moi <span class="italic">où tu as mal</span>, je te dirai <span class="italic">pourquoi</span>. <span class="swoosh" style="color:var(--rose)">»</span>
+            </p>
+            <p class="mono text-xs mt-4" style="color:var(--cream-deep)">— Michel Odoul, formateur de Sophie</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Colonne droite : pratiques -->
+      <div class="md:col-span-7">
+        <div class="reveal mb-16">
+          <span class="mono text-xs tracking-[0.3em] uppercase" style="color:var(--rose)">02 — Pratiques</span>
+          <h2 class="serif text-5xl md:text-7xl font-light leading-[1] mt-4 tracking-[-0.02em]">
+            Quatre voies,<br/><span class="swoosh" style="color:var(--rose)">une</span> <span class="italic">intention</span>.
+          </h2>
+          <p class="mt-6 text-base max-w-lg" style="color:rgba(243,234,218,.75)">
+            Chaque pratique est une manière de dialoguer avec le vivant. Ensemble, elles composent un parcours sur-mesure.
+          </p>
+        </div>
+
+        <div class="mt-8">
+          <a href="#" class="soin-row relative flex items-center justify-between py-8 md:py-10 group">
+            <div class="flex items-baseline gap-5 md:gap-10">
+              <span class="mono text-xs" style="color:var(--rose)">01</span>
+              <h3 class="soin-title serif text-3xl md:text-5xl font-light">Shiatsu <span class="swoosh" style="color:var(--rose)">thérapeutique</span></h3>
+            </div>
+            <div class="hidden md:flex items-center gap-6 text-sm" style="color:rgba(243,234,218,.6)">
+              <span>1h · 60€</span>
+              <span class="arrow" style="color:var(--rose)">→</span>
+            </div>
+            <div class="soin-img">
+              <img src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=800&auto=format&fit=crop" class="w-full h-full object-cover" alt=""/>
+            </div>
+          </a>
+
+          <a href="#" class="soin-row relative flex items-center justify-between py-8 md:py-10 group">
+            <div class="flex items-baseline gap-5 md:gap-10">
+              <span class="mono text-xs" style="color:var(--amber)">02</span>
+              <h3 class="soin-title serif text-3xl md:text-5xl font-light">Réflexologie <span class="swoosh" style="color:var(--amber)">plantaire</span></h3>
+            </div>
+            <div class="hidden md:flex items-center gap-6 text-sm" style="color:rgba(243,234,218,.6)">
+              <span>1h · 60€</span>
+              <span class="arrow">→</span>
+            </div>
+            <div class="soin-img">
+              <img src="https://images.unsplash.com/photo-1519824145371-296894a0daa9?w=800&auto=format&fit=crop" class="w-full h-full object-cover" alt=""/>
+            </div>
+          </a>
+
+          <a href="#" class="soin-row relative flex items-center justify-between py-8 md:py-10 group">
+            <div class="flex items-baseline gap-5 md:gap-10">
+              <span class="mono text-xs" style="color:var(--moss-light)">03</span>
+              <h3 class="soin-title serif text-3xl md:text-5xl font-light">Aroma<span class="swoosh" style="color:var(--moss-light)">thérapie</span></h3>
+            </div>
+            <div class="hidden md:flex items-center gap-6 text-sm" style="color:rgba(243,234,218,.6)">
+              <span>Sur consultation</span>
+              <span class="arrow">→</span>
+            </div>
+            <div class="soin-img">
+              <img src="https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?w=800&auto=format&fit=crop" class="w-full h-full object-cover" alt=""/>
+            </div>
+          </a>
+
+          <a href="#" class="soin-row relative flex items-center justify-between py-8 md:py-10 group">
+            <div class="flex items-baseline gap-5 md:gap-10">
+              <span class="mono text-xs" style="color:var(--cream-deep)">04</span>
+              <h3 class="soin-title serif text-3xl md:text-5xl font-light">Méditation <span class="swoosh" style="color:var(--cream-deep)">MBSR</span></h3>
+            </div>
+            <div class="hidden md:flex items-center gap-6 text-sm" style="color:rgba(243,234,218,.6)">
+              <span>Cycle 8 semaines</span>
+              <span class="arrow">→</span>
+            </div>
+            <div class="soin-img">
+              <img src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=800&auto=format&fit=crop" class="w-full h-full object-cover" alt=""/>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TÉMOIGNAGE immersif -->
+<section class="relative py-24 md:py-40 overflow-hidden" style="background:linear-gradient(180deg,var(--moss-deep) 0%,var(--moss) 100%);">
+  <!-- Image décorative côté -->
+  <div class="absolute top-0 right-0 bottom-0 w-1/2 hidden md:block opacity-50">
+    <img src="https://images.unsplash.com/photo-1466692476868-aef1dfb1e735?w=1600&auto=format&fit=crop" class="w-full h-full object-cover" alt="fougère détail" style="mask-image:linear-gradient(90deg,transparent 0%,black 60%);-webkit-mask-image:linear-gradient(90deg,transparent 0%,black 60%);filter:saturate(.8) brightness(.7)"/>
+  </div>
+
+  <div class="glow-amber" style="width:600px;height:600px;background:var(--rose-deep);opacity:.2;top:-100px;left:-200px;"></div>
+
+  <div class="relative px-6 md:px-10 max-w-[1400px] mx-auto">
+    <div class="grid md:grid-cols-12 gap-8">
+      <div class="md:col-span-2">
+        <span class="reveal mono text-xs tracking-[0.3em] uppercase" style="color:var(--rose)">03</span>
+        <p class="reveal serif text-6xl mt-6 swoosh" style="color:var(--rose-deep)">voix</p>
+      </div>
+
+      <div class="md:col-span-8">
+        <blockquote class="reveal serif text-3xl md:text-5xl font-light leading-[1.2] tracking-[-0.01em]">
+          Sophie Delahaye a <span class="swoosh" style="color:var(--rose)">guéri mon kyste mucoïde</span> avec un traitement naturel appliqué en quelques séances. Je n'ai donc pas eu besoin de <span class="italic">la petite opération</span> que mon dermatologue m'avait prescrite. <span class="swoosh" style="color:var(--amber)">Je lui suis tellement reconnaissante.</span>
+        </blockquote>
+
+        <div class="reveal mt-12 flex items-center justify-between flex-wrap gap-6 pt-8 border-t" style="border-color:rgba(243,234,218,.15)">
+          <div class="flex items-center gap-4">
+            <div class="w-12 h-12 rounded-full flex items-center justify-center serif text-xl" style="background:var(--rose);color:var(--moss-deep)">J</div>
+            <div>
+              <p class="text-base">Jan Skyrme-Jones</p>
+              <p class="mono text-xs mt-0.5" style="color:rgba(243,234,218,.55)"><span style="color:var(--amber)">★★★★★</span> · Avis Google · Mars 2025</p>
+            </div>
+          </div>
+
+          <div class="flex items-center gap-8">
+            <div>
+              <p class="stat-num text-4xl" style="color:var(--rose)">4.9</p>
+              <p class="mono text-xs mt-1" style="color:rgba(243,234,218,.55)">note moyenne</p>
+            </div>
+            <div class="w-px h-10" style="background:rgba(243,234,218,.15)"></div>
+            <div>
+              <p class="stat-num text-4xl" style="color:var(--amber)">12</p>
+              <p class="mono text-xs mt-1" style="color:rgba(243,234,218,.55)">avis Google</p>
+            </div>
+            <a href="#" class="hidden md:inline-flex items-center gap-2 text-sm pb-1 border-b transition-colors" style="border-color:var(--rose);color:var(--rose)">
+              Tous les avis <span class="swoosh">→</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="px-6 md:px-10 py-12 flex flex-col md:flex-row items-center justify-between gap-6 text-sm border-t" style="color:rgba(243,234,218,.5);border-color:rgba(243,234,218,.08);background:var(--moss-deep);">
+  <div class="flex flex-col gap-1">
+    <span class="mono text-xs">© MMXXVI · Zen en Conscience · Sophie Delahaye</span>
+    <span class="mono text-xs" style="color:rgba(243,234,218,.4)">105 avenue de l'Europe · 78160 Marly-le-Roi</span>
+  </div>
+  <span class="serif italic" style="color:var(--rose)">Direction C — Sanctuaire Végétal</span>
+</footer>
+
+<script>
+  gsap.registerPlugin(ScrollTrigger);
+
+  // Title char reveal
+  ["title1","title2","title3"].forEach(id=>{
+    const el=document.getElementById(id); if(!el) return;
+    // split only top-level text nodes to preserve child spans
+    const walk=(node)=>{
+      const children=[...node.childNodes];
+      children.forEach(c=>{
+        if(c.nodeType===3){
+          const frag=document.createDocumentFragment();
+          [...c.textContent].forEach(ch=>{
+            const s=document.createElement("span");
+            s.className="char";
+            s.textContent=(ch===" "?"\u00A0":ch);
+            frag.appendChild(s);
+          });
+          c.replaceWith(frag);
+        } else if(c.nodeType===1){ walk(c); }
+      });
+    };
+    walk(el);
+  });
+  gsap.to(".char",{opacity:1,y:0,duration:.9,stagger:.015,ease:"power3.out",delay:.3});
+
+  gsap.utils.toArray(".reveal").forEach(el=>{
+    gsap.to(el,{opacity:1,y:0,duration:1.1,ease:"power3.out",scrollTrigger:{trigger:el,start:"top 88%"}});
+  });
+
+  // Parallax hero image
+  gsap.to(".hero-img img",{y:150,ease:"none",scrollTrigger:{trigger:".hero-img",start:"top top",end:"bottom top",scrub:true}});
+
+  // Glows drift
+  gsap.utils.toArray(".glow-amber").forEach((el,i)=>{
+    gsap.to(el,{y:(i%2===0?-80:80),x:(i%2===0?40:-40),ease:"none",scrollTrigger:{trigger:el,start:"top bottom",end:"bottom top",scrub:true}});
+  });
+</script>
+</body>
+</html>
