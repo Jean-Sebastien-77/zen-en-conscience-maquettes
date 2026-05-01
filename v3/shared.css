@@ -104,7 +104,11 @@ h3.serif{font-size:clamp(1.5rem,2.5vw,2.25rem);}
   transition:transform .45s cubic-bezier(.2,.8,.2,1), box-shadow .45s cubic-bezier(.2,.8,.2,1);
   box-shadow:0 4px 14px -4px rgba(43,42,38,.08);
 }
+.mega-card,.mega-card *,.mega-card:hover,.mega-card:hover *{color:var(--cream) !important;}
+.mega-card.active::after{display:none !important;}
 .mega-card:hover{transform:translateY(-5px);box-shadow:0 22px 44px -12px rgba(43,42,38,.28);}
+.mega-card h4{transition:transform .45s cubic-bezier(.2,.8,.2,1);transform-origin:left center;}
+.mega-card:hover h4{transform:scale(1.06);}
 .mega-card-img{aspect-ratio:16/10;overflow:hidden;position:relative;}
 .mega-card-img img{width:100%;height:100%;object-fit:cover;transition:transform 1s cubic-bezier(.2,.8,.2,1);}
 .mega-card:hover .mega-card-img img{transform:scale(1.07);}
