@@ -38,7 +38,7 @@ img{display:block;max-width:100%;}
 .section-tight{padding:4rem 0;}
 
 /* ===== Decorative blobs ===== */
-.blob{position:absolute;border-radius:50%;filter:blur(100px);opacity:.25;pointer-events:none;z-index:0;}
+.blob{position:absolute;border-radius:50%;filter:blur(100px);opacity:.45;pointer-events:none;z-index:0;background:#C2A878 !important;}
 
 /* ===== Typography helpers ===== */
 .eyebrow{font-size:.7rem;letter-spacing:.3em;text-transform:uppercase;color:var(--sage-deep);}
