@@ -165,15 +165,55 @@
       <h2 class="serif">Les problématiques que <span class="italic" style="color:var(--terra)">j'accompagne</span>.</h2>
       <p>Chaque personne, chaque corps a son histoire. Voici quelques motifs fréquents de consultation — la liste n'est pas exhaustive.</p>
     </div>
-    <div class="reveal" style="display:flex;flex-wrap:wrap;gap:.7rem;">
-      <a href="soin-shiatsu.html" class="chip">Stress et anxiété</a>
-      <a href="soin-reflexologie.html" class="chip">Sommeil perturbé</a>
-      <a href="soin-shiatsu.html" class="chip">Tensions musculaires &amp; dorsales</a>
-      <a href="meditation.html" class="chip">Burn-out / surcharge mentale</a>
-      <a href="meditation.html" class="chip">Hyperactivité de l'enfant</a>
-      <a href="soin-reflexologie.html" class="chip">Troubles digestifs liés au stress</a>
-      <a href="soin-shiatsu.html" class="chip">Préparation à un événement</a>
-      <a href="soins.html" class="chip">Recherche de mieux-être global</a>
+    <style>
+      .pb-grid{display:grid;grid-template-columns:1fr;gap:1rem;margin-top:2.5rem;}
+      @media(min-width:700px){.pb-grid{grid-template-columns:repeat(2,1fr);gap:1.2rem;}}
+      @media(min-width:1024px){.pb-grid{grid-template-columns:repeat(3,1fr);gap:1.4rem;}}
+      .pb-card{display:block;background:var(--cream);border:1px solid rgba(43,42,38,.06);border-radius:24px;padding:1.6rem 1.5rem 1.5rem;text-decoration:none;color:inherit;transition:transform .4s cubic-bezier(.2,.8,.2,1),border-color .3s,box-shadow .3s;position:relative;overflow:hidden;}
+      .pb-card:hover{transform:translateY(-4px);border-color:var(--sage);box-shadow:0 12px 30px rgba(127,140,113,.12);}
+      .pb-card:hover .pb-arrow{transform:translateX(4px);color:var(--terra);}
+      .pb-icon{width:38px;height:38px;color:var(--sage-deep);margin-bottom:1.1rem;}
+      .pb-card h3{font-family:'DM Serif Display',serif;font-weight:400;font-size:1.25rem;line-height:1.25;margin:0 0 .5rem;letter-spacing:-.005em;}
+      .pb-card p{margin:0;font-size:.92rem;line-height:1.55;color:var(--ink-soft);}
+      .pb-arrow{position:absolute;bottom:1.1rem;right:1.3rem;font-size:.85rem;color:var(--sage-deep);transition:transform .3s,color .3s;letter-spacing:.05em;}
+    </style>
+    <div class="pb-grid reveal">
+      <a href="soin-shiatsu.html" class="pb-card">
+        <svg class="pb-icon" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 22 Q 10 16 15 22 T 25 22 T 35 22"/><path d="M5 28 Q 10 22 15 28 T 25 28 T 35 28" opacity=".5"/></svg>
+        <h3>Stress &amp; anxiété</h3>
+        <p>Apaiser le mental qui s'emballe et retrouver une respiration plus ample.</p>
+        <span class="pb-arrow">→</span>
+      </a>
+      <a href="soin-reflexologie.html" class="pb-card">
+        <svg class="pb-icon" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M28 6 A 14 14 0 1 0 34 22 A 11 11 0 0 1 28 6 Z"/></svg>
+        <h3>Sommeil perturbé</h3>
+        <p>Renouer avec un sommeil profond, des nuits réparatrices, des matins plus clairs.</p>
+        <span class="pb-arrow">→</span>
+      </a>
+      <a href="soin-shiatsu.html" class="pb-card">
+        <svg class="pb-icon" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 5 V 35"/><circle cx="20" cy="10" r="2"/><circle cx="20" cy="18" r="2"/><circle cx="20" cy="26" r="2"/><circle cx="20" cy="34" r="2"/><path d="M14 13 L 26 13 M13 21 L 27 21 M14 29 L 26 29" opacity=".4"/></svg>
+        <h3>Tensions musculaires &amp; dorsales</h3>
+        <p>Dénouer le corps qui porte trop, libérer les zones où les pressions s'accumulent.</p>
+        <span class="pb-arrow">→</span>
+      </a>
+      <a href="meditation.html" class="pb-card">
+        <svg class="pb-icon" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="20" cy="20" r="14"/><path d="M14 20 Q 20 14 26 20 Q 20 26 14 20 Z"/><circle cx="20" cy="20" r="2" fill="currentColor"/></svg>
+        <h3>Burn-out &amp; surcharge mentale</h3>
+        <p>Sortir de la fatigue qui ne passe plus, retrouver de l'énergie disponible et du recul.</p>
+        <span class="pb-arrow">→</span>
+      </a>
+      <a href="meditation.html" class="pb-card">
+        <svg class="pb-icon" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M8 28 L 14 20 L 20 26 L 28 14 L 32 18"/><circle cx="14" cy="20" r="1.5" fill="currentColor"/><circle cx="20" cy="26" r="1.5" fill="currentColor"/><circle cx="28" cy="14" r="1.5" fill="currentColor"/><path d="M8 33 H 32" opacity=".4"/></svg>
+        <h3>Hyperactivité de l'enfant</h3>
+        <p>Aider l'enfant à canaliser son énergie et accéder à la concentration en douceur.</p>
+        <span class="pb-arrow">→</span>
+      </a>
+      <a href="soin-reflexologie.html" class="pb-card">
+        <svg class="pb-icon" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 8 C 12 8 12 18 20 18 C 28 18 28 28 20 28 C 14 28 14 34 20 34"/></svg>
+        <h3>Troubles digestifs liés au stress</h3>
+        <p>Calmer un système digestif sous tension par le travail des zones réflexes et des méridiens.</p>
+        <span class="pb-arrow">→</span>
+      </a>
     </div>
   </div>
 </section>
