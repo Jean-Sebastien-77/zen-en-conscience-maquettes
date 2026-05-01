@@ -176,9 +176,9 @@ h3.serif{font-size:clamp(1.5rem,2.5vw,2.25rem);}
 
 /* ===== Marquee ===== */
 .marquee-wrap{overflow:hidden;border-block:1px solid rgba(43,42,38,.08);padding:1.2rem 0;}
-.marquee{display:inline-flex;gap:3rem;animation:marquee 50s linear infinite;white-space:nowrap;}
+.marquee{display:inline-flex;align-items:center;gap:3rem;animation:marquee 50s linear infinite;white-space:nowrap;}
 .marquee span{font-family:'DM Serif Display',serif;font-style:italic;font-size:clamp(1.6rem,3vw,2.6rem);color:var(--sage-deep);}
-.marquee .star{color:var(--sage-deep);font-style:normal;font-size:1em;vertical-align:middle;opacity:.6;}
+.marquee .star{font-size:0;display:inline-block;width:.5rem;height:.5rem;border-radius:50%;background:var(--sage-deep);opacity:.5;}
 @keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
 /* ===== Form ===== */
