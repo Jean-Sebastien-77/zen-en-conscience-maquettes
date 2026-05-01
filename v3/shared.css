@@ -289,23 +289,25 @@ h3.serif{font-size:clamp(1.5rem,2.5vw,2.25rem);}
 
 /* ===== Feuille décorative — utilitaire signature ===== */
 .leaf{
+  --rot:0deg;--shift:0px;
   position:absolute;display:inline-block;pointer-events:none;
-  width:90px;height:90px;opacity:.5;z-index:1;
+  width:90px;height:90px;opacity:.5;z-index:3;
   background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg' fill='none' stroke='%237F8C71' stroke-width='1.5'%3E%3Cpath d='M100 20 C 40 40 20 120 100 180 C 180 120 160 40 100 20 Z'/%3E%3Cpath d='M100 20 L 100 180' stroke-width='1'/%3E%3C/svg%3E");
   background-size:contain;background-repeat:no-repeat;
+  transform:rotate(var(--rot)) translateY(var(--shift));
 }
 .leaf-sm{width:60px;height:60px;}
 .leaf-lg{width:140px;height:140px;}
 .leaf-xl{width:200px;height:200px;}
 .leaf-terra{background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg' fill='none' stroke='%23C97B5A' stroke-width='1.5'%3E%3Cpath d='M100 20 C 40 40 20 120 100 180 C 180 120 160 40 100 20 Z'/%3E%3Cpath d='M100 20 L 100 180' stroke-width='1'/%3E%3C/svg%3E");}
-.leaf-rot-15{transform:rotate(15deg);}
-.leaf-rot-30{transform:rotate(30deg);}
-.leaf-rot-45{transform:rotate(45deg);}
-.leaf-rot-60{transform:rotate(60deg);}
-.leaf-rot-90{transform:rotate(90deg);}
-.leaf-rot-110{transform:rotate(110deg);}
-.leaf-rot--15{transform:rotate(-15deg);}
-.leaf-rot--30{transform:rotate(-30deg);}
-.leaf-rot--45{transform:rotate(-45deg);}
-.leaf-rot--60{transform:rotate(-60deg);}
-.leaf-rot--90{transform:rotate(-90deg);}
+.leaf-rot-15{--rot:15deg;}
+.leaf-rot-30{--rot:30deg;}
+.leaf-rot-45{--rot:45deg;}
+.leaf-rot-60{--rot:60deg;}
+.leaf-rot-90{--rot:90deg;}
+.leaf-rot-110{--rot:110deg;}
+.leaf-rot--15{--rot:-15deg;}
+.leaf-rot--30{--rot:-30deg;}
+.leaf-rot--45{--rot:-45deg;}
+.leaf-rot--60{--rot:-60deg;}
+.leaf-rot--90{--rot:-90deg;}

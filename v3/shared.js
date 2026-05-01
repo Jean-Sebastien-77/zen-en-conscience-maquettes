@@ -44,7 +44,12 @@ async function bootstrap(){
         if(rect.bottom<0||rect.top>vh) return;
         const progress=(rect.top+rect.height/2-vh/2)/vh;
         const speed=parseFloat(el.dataset.parallax)||0.3;
-        el.style.transform=`translateY(${-progress*speed*100}px)`;
+        const shift=`${-progress*speed*100}px`;
+        if(el.classList.contains('leaf')){
+          el.style.setProperty('--shift',shift);
+        }else{
+          el.style.transform=`translateY(${shift})`;
+        }
       });
       ticking=false;
     };
