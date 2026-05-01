@@ -37,8 +37,6 @@ img{display:block;max-width:100%;}
 @media(min-width:768px){.section{padding:8rem 0;}}
 .section-tight{padding:4rem 0;}
 
-/* ===== Decorative blobs ===== */
-.blob{position:absolute;border-radius:50%;filter:blur(100px);opacity:.7;pointer-events:none;z-index:0;background:#FBF6E5 !important;}
 
 /* ===== Typography helpers ===== */
 .eyebrow{font-size:.7rem;letter-spacing:.3em;text-transform:uppercase;color:var(--sage-deep);}
