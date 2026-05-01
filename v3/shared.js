@@ -33,6 +33,24 @@ async function bootstrap(){
     entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});
   },{rootMargin:'0px 0px -10% 0px',threshold:0.05});
   document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+  // Parallax léger sur les éléments [data-parallax]
+  const parallaxEls=document.querySelectorAll('[data-parallax]');
+  if(parallaxEls.length && !window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+    let ticking=false;
+    const updateParallax=()=>{
+      const vh=window.innerHeight;
+      parallaxEls.forEach(el=>{
+        const rect=el.getBoundingClientRect();
+        if(rect.bottom<0||rect.top>vh) return;
+        const progress=(rect.top+rect.height/2-vh/2)/vh;
+        const speed=parseFloat(el.dataset.parallax)||0.3;
+        el.style.transform=`translateY(${-progress*speed*100}px)`;
+      });
+      ticking=false;
+    };
+    window.addEventListener('scroll',()=>{if(!ticking){requestAnimationFrame(updateParallax);ticking=true;}},{passive:true});
+    updateParallax();
+  }
   // FAQ
   document.querySelectorAll('.faq-q').forEach(btn=>{
     btn.addEventListener('click',()=>btn.parentElement.classList.toggle('open'));
