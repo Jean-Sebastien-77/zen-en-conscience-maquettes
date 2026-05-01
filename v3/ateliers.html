@@ -14,48 +14,68 @@
   <div class="container" style="position:relative;">
     <span class="eyebrow reveal">· Agenda</span>
     <h1 class="serif reveal" style="margin-top:1.2rem;">Ateliers &amp; <span class="italic" style="color:var(--terra)">événements</span>.</h1>
-    <p class="lead reveal">Cycles MBSR, ateliers Mindful UP, soirées auto-shiatsu, journées découverte : retrouvez ici tous les rendez-vous à venir. Inscriptions via BilletWeb.</p>
+    <p class="lead reveal" style="max-width:42rem;">Cycles MBSR, ateliers Mindful UP, soirées auto-shiatsu, journées découverte : retrouvez ici tous les rendez-vous à venir. Inscriptions via BilletWeb.</p>
+
+    <!-- ÉVÉNEMENT ÉPINGLÉ -->
+    <style>
+      .featured-event{display:grid;grid-template-columns:1fr;gap:0;margin-top:3.5rem;border-radius:32px;overflow:hidden;background:var(--cream-deep);box-shadow:0 30px 60px -20px rgba(43,42,38,.18);transition:transform .5s cubic-bezier(.2,.8,.2,1);text-decoration:none;color:inherit;}
+      .featured-event:hover{transform:translateY(-4px);}
+      @media(min-width:900px){.featured-event{grid-template-columns:1.05fr 1fr;}}
+      .featured-event .fe-img{position:relative;aspect-ratio:4/3;overflow:hidden;}
+      .featured-event .fe-img img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s cubic-bezier(.2,.8,.2,1);}
+      .featured-event:hover .fe-img img{transform:scale(1.04);}
+      .featured-event .fe-pin{position:absolute;top:1.2rem;right:1.2rem;background:var(--cream);color:var(--ink);font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;padding:.5rem .9rem;border-radius:999px;font-weight:500;display:flex;align-items:center;gap:.4rem;z-index:2;}
+      .featured-event .fe-pin::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--terra);}
+      .featured-event .fe-body{padding:2.5rem 2.5rem 2.8rem;display:flex;flex-direction:column;justify-content:center;}
+      @media(min-width:900px){.featured-event .fe-body{padding:3rem 3.5rem;}}
+    </style>
+    <a href="#" class="featured-event reveal">
+      <div class="fe-img">
+        <span class="atelier-date is-mbsr">12 mai → 30 juin</span>
+        <span class="fe-pin">À l'affiche</span>
+        <img src="img/ambiance-meditation-vue-1600w.webp" alt=""/>
+      </div>
+      <div class="fe-body">
+        <span class="eyebrow">· Prochain rendez-vous</span>
+        <h2 class="serif" style="font-size:clamp(1.8rem,3.5vw,2.6rem);margin:.8rem 0 1rem;line-height:1.1;">Cycle MBSR · <span class="italic" style="color:var(--terra)">printemps</span></h2>
+        <p style="font-size:1rem;line-height:1.65;color:var(--ink-soft);margin:0 0 1.5rem;">8 séances hebdomadaires de 2h30 + une journée de pratique à Marly-le-Roi. 12 places, tarif 480€ (facilités de paiement possibles).</p>
+        <div style="display:flex;gap:.7rem;flex-wrap:wrap;">
+          <span class="btn-primary btn-sm">S'inscrire sur BilletWeb →</span>
+        </div>
+      </div>
+    </a>
   </div>
 </section>
 
 <section class="section">
   <div class="container">
-    <div class="reveal section-title"><span class="eyebrow">· À venir</span><h2 class="serif">Prochains <span class="italic" style="color:var(--terra)">rendez-vous</span>.</h2></div>
+    <div class="reveal section-title"><span class="eyebrow">· Aussi à venir</span><h2 class="serif">Les autres <span class="italic" style="color:var(--terra)">rendez-vous</span>.</h2></div>
 
-    <div class="grid grid-2">
+    <div class="grid grid-3">
       <a href="#" class="card reveal">
-        <div class="card-img" style="aspect-ratio:16/10;"><span class="atelier-date is-mbsr">12 mai → 30 juin</span><img src="img/ambiance-meditation-vue-1600w.webp" alt=""/></div>
-        <div class="card-body" style="padding:2rem;">
-          <span class="card-tag">Marly-le-Roi</span>
-          <h3 class="serif" style="font-size:2rem;">Cycle MBSR · printemps</h3>
-          <p style="margin:.8rem 0 1.5rem;color:var(--ink-soft);">8 séances hebdomadaires de 2h30 + une journée de pratique. 12 places. Tarif : 480€ (facilités de paiement possibles).</p>
-          <span class="btn-primary btn-sm">S'inscrire sur BilletWeb →</span>
-        </div>
-      </a>
-      <a href="#" class="card reveal">
-        <div class="card-img" style="aspect-ratio:16/10;"><span class="atelier-date is-mindful">22 mai</span><img src="img/mindful-up-enfants-1600w.webp" alt=""/></div>
-        <div class="card-body" style="padding:2rem;">
+        <div class="card-img" style="aspect-ratio:4/3;"><span class="atelier-date is-mindful">22 mai</span><img src="img/mindful-up-enfants-1600w.webp" alt=""/></div>
+        <div class="card-body" style="padding:1.8rem;">
           <span class="card-tag">Versailles · 14h-17h</span>
-          <h3 class="serif" style="font-size:2rem;">Atelier Mindful UP enfants</h3>
-          <p style="margin:.8rem 0 1.5rem;color:var(--ink-soft);">Initiation à la pleine conscience pour les 8-12 ans. 8 places. Tarif : 45€/enfant.</p>
+          <h3 class="serif" style="font-size:1.5rem;">Atelier Mindful UP enfants</h3>
+          <p style="margin:.6rem 0 1.2rem;font-size:.92rem;color:var(--ink-soft);">Initiation à la pleine conscience pour les 8-12 ans. 8 places. 45€/enfant.</p>
           <span class="btn-primary btn-sm">S'inscrire sur BilletWeb →</span>
         </div>
       </a>
       <a href="#" class="card reveal">
-        <div class="card-img" style="aspect-ratio:16/10;"><span class="atelier-date is-corporel">8 juin</span><img src="img/shiatsu-massage-visage-1600w.webp" alt=""/></div>
-        <div class="card-body" style="padding:2rem;">
+        <div class="card-img" style="aspect-ratio:4/3;"><span class="atelier-date is-corporel">8 juin</span><img src="img/shiatsu-massage-visage-1600w.webp" alt=""/></div>
+        <div class="card-body" style="padding:1.8rem;">
           <span class="card-tag">Marly-le-Roi · 19h-21h</span>
-          <h3 class="serif" style="font-size:2rem;">Soirée auto-shiatsu</h3>
-          <p style="margin:.8rem 0 1.5rem;color:var(--ink-soft);">Apprenez les gestes simples pour soulager nuque, épaules et mains. 10 places. Tarif : 35€.</p>
+          <h3 class="serif" style="font-size:1.5rem;">Soirée auto-shiatsu</h3>
+          <p style="margin:.6rem 0 1.2rem;font-size:.92rem;color:var(--ink-soft);">Gestes simples pour soulager nuque, épaules et mains. 10 places. 35€.</p>
           <span class="btn-primary btn-sm">S'inscrire sur BilletWeb →</span>
         </div>
       </a>
       <a href="#" class="card reveal">
-        <div class="card-img" style="aspect-ratio:16/10;"><span class="atelier-date is-mbsr">15 sept. → 3 nov.</span><img src="img/ambiance-coucher-soleil-meditation-1600w.webp" alt=""/></div>
-        <div class="card-body" style="padding:2rem;">
+        <div class="card-img" style="aspect-ratio:4/3;"><span class="atelier-date is-mbsr">15 sept. → 3 nov.</span><img src="img/ambiance-coucher-soleil-meditation-1600w.webp" alt=""/></div>
+        <div class="card-body" style="padding:1.8rem;">
           <span class="card-tag">Marly-le-Roi</span>
-          <h3 class="serif" style="font-size:2rem;">Cycle MBSR · rentrée</h3>
-          <p style="margin:.8rem 0 1.5rem;color:var(--ink-soft);">Le cycle classique pour démarrer l'automne en pleine conscience. Inscriptions dès juillet.</p>
+          <h3 class="serif" style="font-size:1.5rem;">Cycle MBSR · rentrée</h3>
+          <p style="margin:.6rem 0 1.2rem;font-size:.92rem;color:var(--ink-soft);">Le cycle classique pour démarrer l'automne en pleine conscience.</p>
           <span class="btn-ghost btn-sm">Pré-inscription par email →</span>
         </div>
       </a>
